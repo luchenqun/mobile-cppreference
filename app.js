@@ -36,6 +36,7 @@ app.use(async ctx => {
       this.href = (os.platform() == "linux" ? "http://cpp.luchenqun.com/" : "http://127.0.0.1:3001/") + this.href;
     });
     $("img").each(function(i) {
+      console.log($(this).attr('src'));
       if (!/http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/.test(this.src)) {
         this.src = "http://zh.cppreference.com" + this.src;
       }
