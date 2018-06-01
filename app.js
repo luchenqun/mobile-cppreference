@@ -12,15 +12,18 @@ app.use(require("@koa/cors")());
 app.use(async ctx => {
   let path = ctx.path.substr(1);
   let url = "http://zh.cppreference.com/w/%E9%A6%96%E9%A1%B5";
-  
-  var deviceAgent = ctx.req.headers["user-agent"].toLowerCase();
-  var agentID = deviceAgent.match(/(iphone|ipod|ipad|android)/);
-  console.log("path =[" + path + "]");
-
   if (/http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/.test(path)) {
     url = path;
   } else {
     url = "http://zh.cppreference.com/" + path;
+  }
+
+  var deviceAgent = ctx.req.headers["user-agent"].toLowerCase();
+  var agentID = deviceAgent.match(/(iphone|ipod|ipad|android)/);
+  // 如果不是移动设备，请你直接访问官网
+  if (!agentID) {
+    ctx.redirect(url);
+    return;
   }
 
   var options = {
@@ -46,7 +49,7 @@ app.use(async ctx => {
     });
 
     // 特殊处理容器库的表格
-    if (agentID && path == "w/cpp/container") {
+    if (path == "w/cpp/container") {
       $("#mw-content-text")
         .children()
         .last()

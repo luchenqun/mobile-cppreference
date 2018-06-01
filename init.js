@@ -1,5 +1,4 @@
 $(function() {
-
   var u = navigator.userAgent;
   var device = { //移动终端浏览器版本信息
       trident: u.indexOf('Trident') > -1, //IE内核
@@ -14,13 +13,11 @@ $(function() {
       webApp: u.indexOf('Safari') == -1 //是否web应该程序，没有头部与底部
   };
 
-
   if (!device.mobile)  return;
 
-  $("body").css("min-width", "90%");
+  $("body").css("min-width", "100%");
   $("#content").css("max-width", "100%");
 
-  $("table").css("table-layout", "fixed");
   $("table").wrap("<div style='width:100%;overflow:scroll;'></div>");
 
   // 删除 "运行此代码"
