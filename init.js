@@ -15,6 +15,7 @@ $(function() {
 
   if (!device.mobile)  return;
 
+  $("body").css("font-family", "'Roboto', sans-serif");
   $("body").css("min-width", "100%");
   $("#content").css("max-width", "100%");
 
@@ -34,4 +35,26 @@ $(function() {
   // 尾部
   $("#footer").css("max-width", "100%");
   $("#cpp-footer-base").css("max-width", "100%");
+
+  // 一些调整
+  $("p").css("line-height", "1.5em");
+  $("td").css("line-height", "1.2em");
+  $("div").css("line-height", "1.5em");
+  $(".t-nv-begin td").css("height", "25px");
+
+  $("p").css("font-size", "16px");
+  $("code").css("font-size", "16px");
+  $("span").css("font-size", "16px");
+  $("td a").css("font-size", "16px");
+  $("td").css("font-size", "16px");
+  $("div").css("font-size", "16px");
+
+  $("th a tt").css("font-size", "16px");
+
+  $(".t-mark").css("font-size", "8px");
+
+  $(".t-navbar").css("height", "35px");
+  $("#mw-head").css("height", "30px");
+  $("#cpp-head-first-base").css("height", "29px");
+  $("#firstHeading").css("margin", "8px 0px");
 });
